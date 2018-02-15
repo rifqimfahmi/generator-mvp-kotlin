@@ -32,6 +32,8 @@ yo mvp-kotlin
 
 Fill the question that meet your project need.
 
+![Tutorial](https://raw.githubusercontent.com/zcabez/generator-mvp-kotlin/master/tutorial.gif)
+
 After done creating the project, open the project in Android Studio and wait until gradle finish its build. Because the project use Dagger as dependency injection, you have to make the project first by going to **Build** -> **Make Project**.
 
 
