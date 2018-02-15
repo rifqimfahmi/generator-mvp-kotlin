@@ -12,10 +12,12 @@ class SplashActivity : BaseActivity(), SplashMvpView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
 
         mActivityComponent.inject(this)
         mSplashPresenter.onAttach(this)
+
+
+        // do something here. eg. check for app update and open the next activity
     }
 
     override fun setup() {
