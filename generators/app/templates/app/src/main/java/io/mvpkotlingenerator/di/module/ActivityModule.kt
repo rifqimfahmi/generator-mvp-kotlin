@@ -37,5 +37,5 @@ class ActivityModule constructor(appCompatActivity: AppCompatActivity) {
 
     @Provides
     @PerActivity
-    fun provideMvpPresenter(presenter: SplashPresenter<SplashMvpView>): SplashMvpPresenter<SplashMvpView> = presenter
+    fun provideSplashMvpPresenter(presenter: SplashPresenter<SplashMvpView>): SplashMvpPresenter<SplashMvpView> = presenter
 }
