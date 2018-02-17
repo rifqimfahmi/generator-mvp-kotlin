@@ -32,7 +32,8 @@ Then generate your new project:
 yo mvp-kotlin
 ```
 
-Fill the question that meet your project need.
+Fill the questions that meet your project need.
+
 
 ![Tutorial](https://raw.githubusercontent.com/zcabez/generator-mvp-kotlin/master/tutorial.gif)
 
@@ -50,6 +51,21 @@ After done creating the project, open the project in Android Studio and wait unt
 
 Apache-2.0 © [Rifqi Mulya Fahmi](https://renotekno.com/)
 
+```
+Copyright 2018 Rifqi Mulya Fahmi
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
 [npm-image]: https://badge.fury.io/js/generator-mvp-kotlin.svg
 [npm-url]: https://npmjs.org/package/generator-mvp-kotlin
