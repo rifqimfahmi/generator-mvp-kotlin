@@ -18,10 +18,6 @@ import <%= package %>.di.module.ActivityModule
 import <%= package %>.dialog.CommonLoadingDialog
 import <%= package %>.util.CommonUtils
 
-/*
- * Created by Rifqi Mulya Fahmi on 13/02/18.
- */
-
 abstract class BaseActivity : AppCompatActivity(), MvpView {
 
     private var mCommonLoadingDialog: CommonLoadingDialog? = null

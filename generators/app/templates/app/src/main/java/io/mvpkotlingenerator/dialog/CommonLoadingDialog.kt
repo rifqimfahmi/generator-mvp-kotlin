@@ -10,10 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import <%= package %>.R
-
-/*
- * Created by Rifqi Mulya Fahmi on 13/02/18.
- */
  
 class CommonLoadingDialog: DialogFragment() {
 

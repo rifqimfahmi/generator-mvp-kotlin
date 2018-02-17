@@ -5,10 +5,6 @@ import <%= package %>.util.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-/*
- * Created by Rifqi Mulya Fahmi on 13/02/18.
- */
-
 open class BasePresenter<V : MvpView> @Inject constructor(dataManager: DataManager,
                                                      schedulerProvider: SchedulerProvider,
                                                      compositeDisposable: CompositeDisposable)

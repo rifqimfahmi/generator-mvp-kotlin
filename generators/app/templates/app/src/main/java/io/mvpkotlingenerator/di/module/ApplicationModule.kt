@@ -13,10 +13,6 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-/*
- * Created by Rifqi Mulya Fahmi on 12/02/18.
- */
-
 @Module
 class ApplicationModule (application: Application) {
 

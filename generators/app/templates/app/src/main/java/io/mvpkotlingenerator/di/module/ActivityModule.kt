@@ -14,10 +14,6 @@ import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-/*
- * Created by Rifqi Mulya Fahmi on 13/02/18.
- */
-
 @Module
 class ActivityModule constructor(appCompatActivity: AppCompatActivity) {
     val mAppCompatActivity: AppCompatActivity = appCompatActivity

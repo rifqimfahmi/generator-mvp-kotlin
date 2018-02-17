@@ -2,10 +2,6 @@ package <%= package %>.ui.base
 
 import android.support.annotation.StringRes
 
-/*
- * Created by Rifqi Mulya Fahmi on 13/02/18.
- */
-
 interface MvpView {
     fun showLoading()
 
