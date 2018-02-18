@@ -8,7 +8,7 @@ class CommonUtils {
         fun showLoadingDialog(fm: FragmentManager): CommonLoadingDialog {
             val commonDialog: CommonLoadingDialog = CommonLoadingDialog()
             commonDialog.show(fm, CommonLoadingDialog.TAG)
-            return CommonLoadingDialog()
+            return commonDialog
         }
     }
 }
