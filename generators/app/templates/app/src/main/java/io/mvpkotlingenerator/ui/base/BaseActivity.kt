@@ -58,9 +58,7 @@ abstract class BaseActivity : AppCompatActivity(), MvpView {
     }
 
     override fun hideLoading() {
-        if (mCommonLoadingDialog?.isVisible!!) {
-            mCommonLoadingDialog?.dismiss()
-        }
+        mCommonLoadingDialog?.dismiss()
     }
 
     private fun showSnackBar(message: String) {
