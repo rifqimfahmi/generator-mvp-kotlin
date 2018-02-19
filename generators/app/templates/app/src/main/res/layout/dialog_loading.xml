@@ -21,12 +21,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textview_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:text="Loading..."
+        android:text="@string/dialog_loading"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintStart_toEndOf="@+id/progressBar"
         app:layout_constraintTop_toTopOf="@+id/progressBar" />

@@ -10,11 +10,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import <%= package %>.R
+import kotlinx.android.synthetic.main.dialog_loading.view.*
  
 class CommonLoadingDialog: DialogFragment() {
 
     companion object {
         const val TAG: String = "dialog_common_loading"
+        const val CUSTOM_MESSAGE = "custom_message"
+
+        fun newInstance(message: String?): CommonLoadingDialog {
+            val commonLoadingDialog: CommonLoadingDialog = CommonLoadingDialog()
+            if (message != null) {
+                val bundle: Bundle = Bundle()
+                bundle.putString(CUSTOM_MESSAGE, message)
+                commonLoadingDialog.arguments = bundle
+            }
+            return commonLoadingDialog
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +35,12 @@ class CommonLoadingDialog: DialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.dialog_loading, container, false)
+        val view: View = inflater.inflate(R.layout.dialog_loading, container, false)
+        val message: String? = arguments?.getString(CUSTOM_MESSAGE)
+        if (message != null) {
+            view.textview_loading.text = message
+        }
+        return view
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

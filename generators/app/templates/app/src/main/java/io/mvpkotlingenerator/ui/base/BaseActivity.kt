@@ -45,8 +45,16 @@ abstract class BaseActivity : AppCompatActivity(), MvpView {
                 checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
     }
 
-    override fun showLoading() {
-        mCommonLoadingDialog = CommonUtils.showLoadingDialog(supportFragmentManager)
+    override fun showLoading() {        
+        mCommonLoadingDialog = CommonUtils.showLoadingDialog(supportFragmentManager, null)
+    }
+
+    override fun showLoadingWithText(message: String) {
+        mCommonLoadingDialog = CommonUtils.showLoadingDialog(supportFragmentManager, message)
+    }
+
+    override fun showLoadingWithText(@StringRes message: Int) {
+        mCommonLoadingDialog = CommonUtils.showLoadingDialog(supportFragmentManager, getString(message))
     }
 
     override fun hideLoading() {

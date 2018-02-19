@@ -5,6 +5,10 @@ import android.support.annotation.StringRes
 interface MvpView {
     fun showLoading()
 
+    fun showLoadingWithText(message: String)
+
+    fun showLoadingWithText(@StringRes message: Int)
+
     fun hideLoading()
 
     fun onError(message: String?)
