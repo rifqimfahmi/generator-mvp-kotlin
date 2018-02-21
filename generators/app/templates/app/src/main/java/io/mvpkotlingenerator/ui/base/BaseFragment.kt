@@ -12,7 +12,7 @@ import <%= package %>.util.CommonUtils
 abstract class BaseFragment : Fragment(), MvpView {
 
     lateinit var mBaseActivity: BaseActivity
-    lateinit var mProgressDialog: CommonLoadingDialog
+    var mProgressDialog: CommonLoadingDialog? = null
 
     abstract fun setUp(view: View)
 
