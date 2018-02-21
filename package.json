@@ -1,6 +1,6 @@
 {
   "name": "generator-mvp-kotlin",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Generator for new Android project to save me from creating basic file over & over again with MVP architecture.",
   "homepage": "",
   "author": {
