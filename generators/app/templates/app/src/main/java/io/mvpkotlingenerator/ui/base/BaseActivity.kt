@@ -18,7 +18,7 @@ import <%= package %>.di.module.ActivityModule
 import <%= package %>.dialog.CommonLoadingDialog
 import <%= package %>.util.CommonUtils
 
-abstract class BaseActivity : AppCompatActivity(), MvpView {
+abstract class BaseActivity : AppCompatActivity(), MvpView, BaseFragment.Callback {
 
     private var mCommonLoadingDialog: CommonLoadingDialog? = null
 
@@ -88,6 +88,14 @@ abstract class BaseActivity : AppCompatActivity(), MvpView {
         } else {
             Toast.makeText(this, "Some error occured", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onFragmentAttached() {
+
+    }
+
+    override fun onFragmentDetached(tag: String) {
+
     }
 
     override fun showMessage(@StringRes resId: Int) {
