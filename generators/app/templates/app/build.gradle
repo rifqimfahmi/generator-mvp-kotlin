@@ -38,7 +38,7 @@ ext {
     retrofit_version = "2.3.0"
     logging_interceptor_version = "3.9.1"
     stetho_version = "1.5.0"
-    stetho_realm_version = "2.1.0"
+    stetho_realm_version = "2.2.2"
     rxjava_version = "2.1.9"
     rxandroid_version = "2.0.1"
     rxbinding_version = "2.1.0"

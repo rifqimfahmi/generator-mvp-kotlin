@@ -17,6 +17,11 @@ open class MyApplication : Application() {
         super.onCreate()
 
         Realm.init(this)
+        val realmConfiguration = RealmConfiguration.Builder()
+                .schemaVersion(1)
+                .deleteRealmIfMigrationNeeded()
+                .build()
+        Realm.setDefaultConfiguration(realmConfiguration)
 
         mAppComponent = DaggerApplicationComponent
                 .builder()
