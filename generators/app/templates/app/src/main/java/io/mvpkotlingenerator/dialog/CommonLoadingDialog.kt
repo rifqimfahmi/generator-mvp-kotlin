@@ -48,6 +48,7 @@ class CommonLoadingDialog: DialogFragment() {
         dialog.setOnKeyListener { _: DialogInterface, keyCode: Int, keyEvent: KeyEvent ->
             onBackPressed(keyCode, keyEvent)
         }
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         return dialog
     }
 
