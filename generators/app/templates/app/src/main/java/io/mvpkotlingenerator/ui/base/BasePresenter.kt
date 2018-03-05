@@ -1,5 +1,8 @@
 package <%= package %>.ui.base
 
+import android.content.pm.PackageManager
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import <%= package %>.data.DataManager
 import <%= package %>.util.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
@@ -25,5 +28,17 @@ open class BasePresenter<V : MvpView> @Inject constructor(dataManager: DataManag
         mMvpView = null
     }
 
+    override fun requestThisPermissions(activity: BaseActivity, requestCode: Int, permissions: Array<String>): Boolean {
+        var neededPopupPermissions: ArrayList<String> = ArrayList()
+        permissions.filterTo(neededPopupPermissions) { ContextCompat.checkSelfPermission(activity, it) == PackageManager.PERMISSION_DENIED }
+
+        if (neededPopupPermissions.size > 0) {
+            ActivityCompat.requestPermissions(activity, neededPopupPermissions.toTypedArray(), requestCode)
+            return true
+        }
+
+        return false // All permissions has been granted
+    }
+    
     fun isViewAttached(): Boolean = mMvpView != null
 }
