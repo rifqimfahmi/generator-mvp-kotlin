@@ -1,4 +1,4 @@
-# generator-mvp-kotlin [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url][![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+# generator-mvp-kotlin [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 > Generator for new Android project to save me from creating basic file over &amp; over again with MVP architecture.
 
 The structure of the project follow the architecture from [Mindorks](https://github.com/MindorksOpenSource/android-mvp-architecture). If you want to know more about the architecture you can read their blog [here](https://blog.mindorks.com/essential-guide-for-designing-your-android-app-architecture-mvp-part-2-b2ac6f3f9637). There are several differences from the original architecture in this project such as, in this project i use Realm instead of greenDao.
