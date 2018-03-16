@@ -7,7 +7,7 @@ import android.support.v4.app.DialogFragment
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.view.ViewGroup
 import <%= package %>.R
 import kotlinx.android.synthetic.main.dialog_loading.view.*

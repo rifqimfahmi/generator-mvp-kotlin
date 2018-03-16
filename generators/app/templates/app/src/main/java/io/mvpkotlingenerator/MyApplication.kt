@@ -5,6 +5,7 @@ import <%= package %>.di.component.ApplicationComponent
 import <%= package %>.di.component.DaggerApplicationComponent
 import <%= package %>.di.module.ApplicationModule
 import io.realm.Realm
+import io.realm.RealmConfiguration
 
 /**
  * Created by rifqimfahmi on 12/02/18.
