@@ -49,7 +49,7 @@ After done creating the project, open the project in Android Studio and wait unt
 
 ## License
 
-Apache-2.0 © [Rifqi Mulya Fahmi](https://renotekno.com/)
+Apache-2.0 © [Rifqi Mulya Fahmi](https://www.linkedin.com/in/rifqi-mulya-fahmi-66b02a10b/)
 
 ```
 Copyright 2018 Rifqi Mulya Fahmi
