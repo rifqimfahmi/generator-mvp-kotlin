@@ -50,7 +50,14 @@ module.exports = class extends Generator {
         name: 'targetSdk',
         message: 'what is your SDK target for this project?',
         store: true,
-        default: 26
+        default: 27
+      },
+      {
+        type: 'input',
+        name: 'buildTool',
+        message: 'what is your Build Tool Version for this project?',
+        store: true,
+        default: 27.0.3
       },
       {
         type: 'input',
