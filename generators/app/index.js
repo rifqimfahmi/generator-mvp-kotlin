@@ -57,7 +57,7 @@ module.exports = class extends Generator {
         name: 'buildTool',
         message: 'what is your Build Tool Version for this project?',
         store: true,
-        default: 27.0.3
+        default: "27.0.3"
       },
       {
         type: 'input',
