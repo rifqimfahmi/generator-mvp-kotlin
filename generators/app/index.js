@@ -3,6 +3,7 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const mkdirp = require('mkdirp');
+const os = require('os');
 
 module.exports = class extends Generator {
   prompting() {
@@ -15,20 +16,20 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'name',
-        message: 'What is your app name?',
+        message: 'App name?',
         default: "Mvp Kotlin"
       },
       {
         type: 'input',
         name: 'companyDomain',
-        message: 'What is your company domain?',
+        message: 'Company domain?',
         store: true,
         default: "example.com"
       },
       {
         type: 'input',
         name: 'package',
-        message: 'What is your applicationId ?',
+        message: 'applicationId ?',
         default: function(answers) {
           var filteredCompanyDomain = answers.companyDomain
                                                 .replace(/[^A-Z0-9\.]+/ig, "")
@@ -48,24 +49,65 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'targetSdk',
-        message: 'what is your SDK target for this project?',
+        message: 'Android SDK target?',
         store: true,
         default: 27
       },
       {
         type: 'input',
         name: 'buildTool',
-        message: 'what is your Build Tool Version for this project?',
+        message: 'Build Tool Version?',
         store: true,
         default: "27.0.3"
       },
       {
         type: 'input',
         name: 'minimumSdk',
-        message: 'what is the minimum Android SDK for this project?',
+        message: 'Minimum Android SDK?',
         store: true,
         default: 16
-      }
+      },
+      {
+        type: 'input',
+        name: 'gradleDaemonVM',
+        message: function() {
+          var maxMemoriInMb = parseInt(os.totalmem() / Math.pow(10, 6))
+          return 'Maximum allocated memory for Gradle Daemon VM ? your maximum memory is ' 
+          + maxMemoriInMb + " MB. " + "The default is 1536 MB"
+        },
+        store: true,
+        validate: function(answers) {
+          if (!(/^\d+$/.test(answers))) {
+            return "You need to provide number"
+          }
+
+          var maxMemoriInMb = parseInt(os.totalmem() / Math.pow(10, 6))
+          var choosenMemorySize = parseInt(answers)
+
+          if (choosenMemorySize > maxMemoriInMb) {
+            return answers + " is more than your maximum memory"
+          }
+
+          if (choosenMemorySize < 1536) {
+            return "Cannot set memory less than the default size(1536 MB)"
+          }
+
+          return true
+        },
+        default: 1536,
+      },
+      {
+        type: 'confirm',
+        name: 'useGradleDaemon',
+        message: 'Use Gradle Daemon for faster build?',
+        default: true
+      },
+      {
+        type: 'confirm',
+        name: 'useGradleParallel',
+        message: 'Use Gradle parallel execution for faster build?',
+        default: true
+      },
     ];
 
     return this.prompt(prompts).then(props => {
@@ -119,7 +161,7 @@ module.exports = class extends Generator {
 
     this.fs.copy(this.templatePath('.gitignore'), this.destinationPath( rootProject + '.gitignore'));
     this.fs.copy(this.templatePath('build.gradle'), this.destinationPath( rootProject + 'build.gradle'));
-    this.fs.copy(this.templatePath('gradle.properties'), this.destinationPath( rootProject + 'gradle.properties'));
+    this.fs.copyTpl(this.templatePath('gradle.properties'), this.destinationPath( rootProject + 'gradle.properties'), this.props);
     this.fs.copy(this.templatePath('gradlew'), this.destinationPath( rootProject + 'gradlew'));
     this.fs.copy(this.templatePath('gradlew.bat'), this.destinationPath( rootProject + 'gradlew.bat'));
     this.fs.copy(this.templatePath('settings.gradle'), this.destinationPath( rootProject + 'settings.gradle'));
