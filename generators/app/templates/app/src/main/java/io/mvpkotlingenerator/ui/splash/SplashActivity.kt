@@ -13,8 +13,6 @@ class SplashActivity : BaseActivity(), SplashMvpView {
     override fun getContentLayout(): Int? = null
 
     override fun setup(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
         mActivityComponent.inject(this)
         mSplashPresenter.onAttach(this)
 
