@@ -4,6 +4,7 @@ import android.app.Application
 import <%= package %>.di.component.ApplicationComponent
 import <%= package %>.di.component.DaggerApplicationComponent
 import <%= package %>.di.module.ApplicationModule
+import com.squareup.leakcanary.LeakCanary
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
@@ -16,6 +17,10 @@ open class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return
+        }
+        LeakCanary.install(this)
 
         Realm.init(this)
         val realmConfiguration = RealmConfiguration.Builder()

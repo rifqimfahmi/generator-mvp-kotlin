@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name"><%= name %></string>
     <string name="dialog_loading">Loading...</string>
+    <string name="ok_btn">Ok</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="dialog_permanently_rejected_title">Permissions Required</string>
+    <string name="dialog_permanently_rejected_message">This app may not work correctly without the requested permissions. Open the app settings screen to modify app permissions</string>
 </resources>
