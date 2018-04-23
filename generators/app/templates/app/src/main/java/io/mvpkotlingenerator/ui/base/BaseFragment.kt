@@ -4,9 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import <%= package %>.di.component.ActivityComponent
 import <%= package %>.dialog.CommonLoadingDialog
+import <%= package %>.ui.base.permission.BasePermissionActivity
 import <%= package %>.util.CommonUtils
 
 abstract class BaseFragment : Fragment(), MvpView {
@@ -14,11 +17,18 @@ abstract class BaseFragment : Fragment(), MvpView {
     lateinit var mBaseActivity: BaseActivity
     var mProgressDialog: CommonLoadingDialog? = null
 
+    abstract fun getFragmentLayout(): Int?
+
     abstract fun setUp(view: View)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUp(view)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        getFragmentLayout()?.let { return inflater.inflate(it, container, false) }
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onAttach(context: Context?) {
@@ -71,6 +81,21 @@ abstract class BaseFragment : Fragment(), MvpView {
         return mBaseActivity.mActivityComponent
     }
 
+    fun requestPermissions(requestCode: Int,
+                           permissions: Array<String>,
+                           reason: String,
+                           allowedCallback: () -> Unit,
+                           rejectedCallback: () -> Unit = {}
+    ) {
+        activity?.let {
+            if (it is BasePermissionActivity) {
+                it.requestPermissions(requestCode, permissions, reason, allowedCallback, rejectedCallback)
+            } else {
+                throw IllegalStateException("To use request permissions, the parent activity must implement BasePermissionActivity class")
+            }
+        }
+    }
+    
     interface Callback {
         fun onFragmentAttached()
         fun onFragmentDetached(tag: String)
