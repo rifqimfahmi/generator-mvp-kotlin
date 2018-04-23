@@ -10,18 +10,14 @@ class SplashActivity : BaseActivity(), SplashMvpView {
     @Inject
     lateinit var mSplashPresenter: SplashMvpPresenter<SplashMvpView>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun getContentLayout(): Int? = null
+
+    override fun setup(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         mActivityComponent.inject(this)
         mSplashPresenter.onAttach(this)
 
-
         // do something here. eg. check for app update and open the next activity
     }
-
-    override fun setup() {
-
-    }
-
 }

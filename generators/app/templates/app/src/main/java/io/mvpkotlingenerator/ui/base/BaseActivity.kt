@@ -24,25 +24,17 @@ abstract class BaseActivity : AppCompatActivity(), MvpView, BaseFragment.Callbac
 
     lateinit var mActivityComponent: ActivityComponent
 
+    abstract fun getContentLayout(): Int?
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getContentLayout()?.let { setContentView(it) }
+
         mActivityComponent = DaggerActivityComponent.builder()
                 .activityModule(ActivityModule(this))
                 .applicationComponent((application as MyApplication).mAppComponent)
                 .build()
-    }
-
-    @TargetApi(Build.VERSION_CODES.M)
-    fun requestPermissionsSafely(permissions: Array<String>, requestCode: Int) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ) {
-            requestPermissions(permissions, requestCode)
-        }
-    }
-
-    @TargetApi(Build.VERSION_CODES.M)
-    fun hasPermission(permission: String): Boolean {
-        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
-                checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
+        setup(savedInstanceState)
     }
 
     override fun showLoading() {        
@@ -102,5 +94,5 @@ abstract class BaseActivity : AppCompatActivity(), MvpView, BaseFragment.Callbac
         showMessage(getString(resId))
     }
 
-    abstract fun setup()
+    abstract fun setup(savedInstanceState: Bundle?)
 }
