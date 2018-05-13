@@ -6,8 +6,9 @@ import <%= package %>.ui.splash.SplashActivity
 import dagger.Component
 
 @PerActivity
-@Component(dependencies = arrayOf(ApplicationComponent::class), modules = arrayOf(ActivityModule::class))
+@Component(dependencies = [(ApplicationComponent::class)], modules = [(ActivityModule::class)])
 interface ActivityComponent {
 
     fun inject(splashActivity: SplashActivity)
+    
 }
