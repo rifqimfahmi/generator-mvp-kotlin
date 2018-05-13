@@ -3,11 +3,12 @@ package <%= package %>.ui.base
 import android.support.annotation.StringRes
 
 interface MvpView {
-    fun showLoading()
 
-    fun showLoadingWithText(message: String)
+    fun showLoading(isBackPressedCancelable: Boolean = true, message: String? = null)
 
-    fun showLoadingWithText(@StringRes message: Int)
+    fun showLoadingWithText(msg: String)
+
+    fun showLoadingWithText(@StringRes msg: Int)
 
     fun hideLoading()
 

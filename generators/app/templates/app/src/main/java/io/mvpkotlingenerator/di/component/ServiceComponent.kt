@@ -1,7 +1,7 @@
-package com.rifqimfahmi.mvpkotlinbasetemplate.di.component
+package <%= package %>.di.component
 
-import com.rifqimfahmi.mvpkotlinbasetemplate.di.PerService
-import com.rifqimfahmi.mvpkotlinbasetemplate.di.module.ServiceModule
+import <%= package %>.di.PerService
+import <%= package %>.di.module.ServiceModule
 import dagger.Component
 
 @PerService

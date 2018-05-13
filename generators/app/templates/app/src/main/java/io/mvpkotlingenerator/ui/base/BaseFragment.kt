@@ -15,7 +15,6 @@ import <%= package %>.util.CommonUtils
 abstract class BaseFragment : Fragment(), MvpView {
 
     lateinit var mBaseActivity: BaseActivity
-    var mProgressDialog: CommonLoadingDialog? = null
 
     abstract fun getFragmentLayout(): Int?
 
@@ -41,24 +40,20 @@ abstract class BaseFragment : Fragment(), MvpView {
         }
     }
 
-    override fun showLoading() {
-        hideLoading()
-        mProgressDialog = CommonUtils.showLoadingDialog(mBaseActivity.supportFragmentManager, null)
+    override fun showLoading(isBackPressedCancelable: Boolean, message: String?) {
+        mBaseActivity.showLoading(isBackPressedCancelable, message)
     }
 
-    override fun showLoadingWithText(message: String) {
-        hideLoading()
-        mProgressDialog = CommonUtils.showLoadingDialog(mBaseActivity.supportFragmentManager, message)
+    override fun showLoadingWithText(msg: String) {
+        showLoading(message = msg)
     }
 
-    override fun showLoadingWithText(@StringRes message: Int) {
-        hideLoading()
-        val text: String = mBaseActivity.getString(message)
-        mProgressDialog = CommonUtils.showLoadingDialog(mBaseActivity.supportFragmentManager, text)
+    override fun showLoadingWithText(@StringRes msg: Int) {
+        showLoading(message = getString(msg))
     }
 
     override fun hideLoading() {
-        mProgressDialog?.dismiss()
+        mBaseActivity.hideLoading()
     }
 
     override fun onError(message: String?) {

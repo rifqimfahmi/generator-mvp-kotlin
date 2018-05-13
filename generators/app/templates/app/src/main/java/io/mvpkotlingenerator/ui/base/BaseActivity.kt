@@ -37,16 +37,22 @@ abstract class BaseActivity : AppCompatActivity(), MvpView, BaseFragment.Callbac
         setup(savedInstanceState)
     }
 
-    override fun showLoading() {        
-        mCommonLoadingDialog = CommonUtils.showLoadingDialog(supportFragmentManager, null)
+    override fun showLoading(isBackPressedCancelable: Boolean, message: String?) {
+        mCommonLoadingDialog?.let {
+            if (it.isVisible) {
+                hideLoading()
+            }
+        }
+        mCommonLoadingDialog = CommonUtils.createLoaderDialog(msg = message)
+        mCommonLoadingDialog?.show(supportFragmentManager, CommonLoadingDialog.TAG)
     }
 
-    override fun showLoadingWithText(message: String) {
-        mCommonLoadingDialog = CommonUtils.showLoadingDialog(supportFragmentManager, message)
+    override fun showLoadingWithText(msg: String) {
+        showLoading(message = msg)
     }
 
-    override fun showLoadingWithText(@StringRes message: Int) {
-        mCommonLoadingDialog = CommonUtils.showLoadingDialog(supportFragmentManager, getString(message))
+    override fun showLoadingWithText(@StringRes msg: Int) {
+        showLoading(message = getString(msg))
     }
 
     override fun hideLoading() {
