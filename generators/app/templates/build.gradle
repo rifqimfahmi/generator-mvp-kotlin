@@ -18,11 +18,11 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter()
         maven {
             url 'https://github.com/WickeDev/stetho-realm/raw/master/maven-repo'
         }
+        google()
+        jcenter()
     }
 }
 
