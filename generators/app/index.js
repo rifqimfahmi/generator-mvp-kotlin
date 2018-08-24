@@ -159,7 +159,7 @@ module.exports = class extends Generator {
 
 
 
-    this.fs.copy(this.templatePath('.gitignore'), this.destinationPath( rootProject + '.gitignore'));
+    this.fs.copy(this.templatePath('gitignore'), this.destinationPath( rootProject + '.gitignore'));
     this.fs.copy(this.templatePath('build.gradle'), this.destinationPath( rootProject + 'build.gradle'));
     this.fs.copyTpl(this.templatePath('gradle.properties'), this.destinationPath( rootProject + 'gradle.properties'), this.props);
     this.fs.copy(this.templatePath('gradlew'), this.destinationPath( rootProject + 'gradlew'));
@@ -167,7 +167,7 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath('settings.gradle'), this.destinationPath( rootProject + 'settings.gradle'));
     this.fs.copy(this.templatePath('gradle'), this.destinationPath( rootProject + 'gradle'));
 
-    this.fs.copy(this.templatePath('app/.gitignore'), this.destinationPath( rootProject + 'app/.gitignore'));
+    this.fs.copy(this.templatePath('app/gitignore'), this.destinationPath( rootProject + 'app/.gitignore'));
     this.fs.copy(this.templatePath('app/proguard-rules.pro'), this.destinationPath( rootProject + 'app/proguard-rules.pro'));
     this.fs.copyTpl(this.templatePath('app/build.gradle'), 
                     this.destinationPath( rootProject + 'app/build.gradle'),
